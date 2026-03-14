@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -563,7 +564,7 @@ NEVER use: em dashes, semicolons, colons, parentheses, emojis, bold-style emphas
 Avoid: complicated, boring, heavy, robotic, bragging, overly polished, or generic language. No abstract phrasing that goes in circles. Do not sound like typical AI.
 Every reader should feel smarter after reading.`;
 
-let apiKey = '';
+let apiKey = localStorage.getItem('ws_api_key') || '';
 let commentMode = 'post';
 
 function openKeyModal() {
@@ -580,6 +581,7 @@ function saveKey() {
   const val = document.getElementById('key-input').value.trim();
   if (!val) return;
   apiKey = val;
+  localStorage.setItem('ws_api_key', val);
   updateKeyStatus();
   closeKeyModal();
   updateNoKeyNotices();
